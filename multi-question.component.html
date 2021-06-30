@@ -1,0 +1,40 @@
+<section class="container-fluid">
+
+  <div *ngIf="questions.showQuestion('question1')">
+    <div class="row">
+      <div class="col-md-7 text-right">
+        <br />
+        <label class="question">(Observe): Does this building have an elevator?</label>
+      </div>
+      <div class="col-md-5 ">
+        <br />
+        <mat-radio-group class="ans-radio-group" [(ngModel)]="questionChoices['question1']" (change)="onChange($event)">
+          <mat-radio-button class="ans-radio-button"
+            *ngFor="let answers of questions.getOptions('question1')" [value]="answers.key">
+            {{ answers.value }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="questions.showQuestion('question2')">
+    <div class="row">
+      <div class="col-md-7 text-right">
+        <br />
+        <label class="question">(Observe): Does this building ({{questions.getStringValue('buildingType')}}) have an elevator?</label>
+      </div>
+      <div class="col-md-5 ">
+        <br />
+        <mat-radio-group class="ans-radio-group" [(ngModel)]="questionChoices.question2" (change)="onChange($event)">
+          <mat-radio-button class="ans-radio-button"
+            *ngFor="let answers of questions.getOptions('question2')" [value]="answers.key">
+            {{ answers.value }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+  </div>
+
+  <div>{{diagnostics}}</div>
+</section> 
